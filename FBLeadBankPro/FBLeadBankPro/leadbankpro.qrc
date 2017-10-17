@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/data">
+        <file>data/gif/one.gif</file>
+        <file>data/style.qss</file>
+        <file>data/icons/email.png</file>
+        <file>data/icons/messenger.png</file>
+        <file>data/icons/email-disabled.png</file>
+        <file>data/icons/messenger-disabled.png</file>
+        <file>data/icons/remove.png</file>
+        <file>data/icons/bluetick.jpg</file>
+        <file>data/icons/unclaimed.png</file>
+        <file>data/icons/moc.png</file>
+        <file>data/countries.txt</file>
+        <file>data/city/United States</file>
+        <file>data/imgdata/FB-Lead-Bank.png</file>
+        <file>data/imgdata/128x128.png</file>
+    </qresource>
+</RCC>

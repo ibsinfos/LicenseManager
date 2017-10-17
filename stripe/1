@@ -1,0 +1,99 @@
+<?php
+error_reporting(E_ALL); 
+require_once('vendor/autoload.php');
+require_once('init.php');
+include_once '../system/autoloader.php';
+//phpinfo();
+$count = 0;
+\Stripe\Stripe::setApiKey("sk_test_1lWBfNNuBsAJIpTmBx63kyyD");
+//$res = \Stripe\Charge::retrieve("ch_19xyToDgQlNi2BFNkgNV57Ad",array('api_key' => "sk_test_1lWBfNNuBsAJIpTmBx63kyyD"));
+$res =\Stripe\Charge::all(array("limit" => 1));
+$input = @file_get_contents("php://input");
+
+//$res_new = str_replace('Stripe\Charge JSON:','',$res);
+//echo "<br>"."webhook data: ".$res_new;
+//echo "<br>"."old webhook data: ".$res;
+
+//if ($res!= '' && $res!== null) {
+
+$res_new = str_replace('Stripe\Collection JSON:','',$res);
+echo "<br>"."webhook DATA: ".$res_new;
+
+$date = date("Y-M-d h:i:s");
+$expiry_date = strtotime(date("Y-M-d h:i:s", strtotime($date)) . "+1 month");
+
+$decoded_val = json_decode($res_new);
+$trans_id = $decoded_val->data[0]->balance_transaction;
+$charge_id = $decoded_val->data[0]->id;
+
+$domain = "www.testdomain.com";
+$comments = "one month license";
+$parameters = "monthly";
+$customer_email = $decoded_val->data[0]->metadata->email;
+$expirydate = $expiry_date;
+$status = "active";
+$productid = "1";
+$userid = "1";
+
+$link = mysql_connect('localhost', 'root','m2n1shlko');
+
+if (!$link) {
+    die('<br>Could not connect: ' . mysql_error());
+}
+//echo "<br>"."Connected successfully"."<br>";
+
+echo $sql_check = "SELECT * FROM webhookdata WHERE charge_id='$charge_id'";
+mysql_select_db('licensemanager');
+$sql_res = mysql_query($sql_check,$link);
+
+if ($sql_res== TRUE) {
+ //  echo "<br>"."count query executed!";
+} else {
+   echo "Error: " . $sql_res . "<br>" .mysql_error();
+}
+echo "<br>: ".$count = mysql_num_rows($sql_res);
+//$count = mysql_num_rows($sql_res);
+
+if($count==0){
+
+$sql = "SELECT configurations FROM settings";
+$query = $DatabaseHandler->query($sql);
+$data = $query->fetch_array();
+$configurations = json_decode($data['configurations'], true);
+
+$LicenseKey = $Tools->GenSerialByMask($configurations['serialmask']);
+
+$sql_product = "SELECT * FROM products WHERE id='1'";
+$query_product = $DatabaseHandler->query($sql_product);
+$data_product = $query_product->fetch_array();
+
+//echo "<br>random license key : ".$LicenseKey;
+
+$sql = "INSERT INTO webhookdata (webhook_data,transaction_id,charge_id,added_date)VALUES ('$res_new','$trans_id','$charge_id',now())";
+mysql_select_db('licensemanager');
+$sql_res_2 = mysql_query($sql,$link);
+
+$sql_license = "INSERT INTO `licenses` (`host`, `licensekey`, `customer_email`, `expirydate`, `productid`, `status`, `issued-by`, `comments`, `parameters`) VALUES ('$domain', '$LicenseKey', '$customer_email', '$expirydate', '$productid', '$status', '1', '$comments', '$parameters');";
+mysql_select_db('licensemanager');        
+$query = mysql_query($sql_license,$link);
+
+if($query === TRUE){
+echo"<br> License inserted successfully!";
+}else{
+echo "Error: ".mysql_error();
+}
+
+if ($sql_res_2 === TRUE) {
+   echo "<br>"."New record created successfully.<br>Thank you your payment is successful!";
+} else {
+   echo "Error: " . $sql . "<br>" .mysql_error();
+}
+}else{
+echo "<br><br>"."Record already exist!";
+}
+//}else{
+//echo "<br><br>"."No data from Webhook!";
+//}
+mysql_close($link);
+exit();
+?>

@@ -1,0 +1,162 @@
+#leftSideBarLeadBankProSimpleUi{
+        background-color: #f8f8f8;
+        padding:0px;
+        border-right: 2px solid #e7e7e7;
+        border-top: 2px solid #e7e7e7;
+        border-bottom: 2px solid #e7e7e7;
+}
+
+#leftSideBarLeadBankProSimpleUi QPushButton {
+    color:#2377ba;
+    text-align:left;
+    background-color: #f8f8f8;
+    border-style: outset;
+    border-width: 0px;
+    border-radius: 0px;
+    border-color: beige;
+    font: 15px;
+    padding: 6px;
+}
+
+#leftSideBarLeadBankProSimpleUi QPushButton:pressed {
+    background-color: #eeeeee;
+    border-style: inset;
+}
+
+#topContentArea
+{
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #e7e7e7;
+}
+
+
+#leadBankProLabel
+{
+    color: #767686;
+    font: 20px;
+}
+
+#mainStackedWidget
+{
+    background-color: white;
+}
+
+#totalResultLabel
+{
+    background-color: white;
+    color: blue;
+    border: 2px solid #e7e7e7;
+    border-radius: 5px;
+    min-width: 50px;
+    max-width: 50px;
+}
+
+#filteredResultLabel
+{
+    background-color: white;
+    color: blue;
+    border: 2px solid #e7e7e7;
+    border-radius: 5px;
+    min-width: 50px;
+    max-width: 50px;
+}
+
+QPushButton#facebookMessengerButton
+{
+    border-image: url(:/data/data/icons/messenger.png);
+}
+
+QPushButton#facebookMessengerButton:disabled
+{
+    border-image: url(:/data/data/icons/messenger-disabled.png);
+}
+
+
+QPushButton#facebookMessengerButton:pressed
+{
+
+}
+
+QPushButton#emailButton
+{
+    border-image: url(:/data/data/icons/email.png);
+}
+
+QPushButton#emailButton:disabled
+{
+    border-image: url(:/data/data/icons/email-disabled.png);
+}
+
+
+QPushButton#emailButton:pressed
+{
+
+}
+
+
+QPushButton#removeButton
+{
+    border-image: url(:/data/data/icons/remove.png);
+}
+
+QPushButton#removeButton:disabled
+{
+    border-image: url(:/data/data/icons/remove.png);
+}
+
+
+QPushButton#removeButton:pressed
+{
+
+}
+
+
+
+QPushButton#verifiedButton
+{
+    border-image: url(:/data/data/icons/bluetick.jpg);
+}
+
+QPushButton#verifiedButton:disabled
+{
+    border-image: url(:/data/data/icons/bluetick.jpg);
+}
+
+
+
+QPushButton#unclaimedButton
+{
+    border-image: url(:/data/data/icons/unclaimed.png);
+}
+
+QPushButton#unclaimedButton:disabled
+{
+    border-image: url(:/data/data/icons/unclaimed.png);
+}
+
+
+
+QPushButton#mockPagePreview
+{
+    border-image: url(:/data/data/icons/moc.png);
+}
+
+QPushButton#mockPagePreview:disabled
+{
+    border-image: url(:/data/data/icons/moc.png);
+}
+
+
+QLabel#totalResultAfterFilter{
+    background-color: rgb(58, 138, 255);
+    font: 40pt;
+    color: rgb(255, 255, 255);
+}
+
+
+
+QLabel#totalResultFound{
+    background-color: rgb(58, 138, 255);
+    font: 40pt;
+    color: rgb(255, 255, 255);
+}

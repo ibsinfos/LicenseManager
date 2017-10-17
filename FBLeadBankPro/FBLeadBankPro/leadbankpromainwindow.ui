@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LeadBankProMainWindow</class>
+ <widget class="QMainWindow" name="LeadBankProMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>FB LeadBank Pro</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="leadbankpro.qrc">
+    <normaloff>:/data/data/imgdata/128x128.png</normaloff>:/data/data/imgdata/128x128.png</iconset>
+  </property>
+  <widget class="LeadBankProSimpleUi" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_Window">
+    <property name="title">
+     <string>&amp;Window</string>
+    </property>
+    <addaction name="actionLog_Window"/>
+   </widget>
+   <widget class="QMenu" name="menuAction">
+    <property name="title">
+     <string>Action</string>
+    </property>
+    <addaction name="action_Clear_Logs"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menu_Window"/>
+   <addaction name="menuAction"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionLog_Window">
+   <property name="text">
+    <string>Log Window</string>
+   </property>
+  </action>
+  <action name="action_Clear_Logs">
+   <property name="text">
+    <string>&amp;Clear Logs</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>LeadBankProSimpleUi</class>
+   <extends>QWidget</extends>
+   <header>leadbankprosimpleui.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="leadbankpro.qrc"/>
+ </resources>
+ <connections/>
+</ui>

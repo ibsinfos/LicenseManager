@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/exit.png</file>
+        <file>icons/load.png</file>
+        <file>data/browser.txt</file>
+        <file>icons/black.png</file>
+        <file>icons/green.png</file>
+        <file>icons/red.png</file>
+        <file>icons/yellow.png</file>
+        <file>icons/blue.png</file>
+        <file>icons/mockpage logo 1024x300.png</file>
+        <file>icons/mockpage logo icon.ico</file>
+        <file>icons/mockpage logo icon.png</file>
+    </qresource>
+</RCC>
